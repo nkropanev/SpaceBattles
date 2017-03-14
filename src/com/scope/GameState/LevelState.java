@@ -15,14 +15,22 @@ public class LevelState extends GameState {
 	
 	public void init() {
 		
-		bg = new Background("/Background/background.png");
+		bg = new Background("/Background/background-v2.png", 1);
+		bg.setVector(0, 0.4);
 		
 	}
 	
-	public void update() {}
+	public void update() {
+		
+		bg.update();
+		
+	}
 	
 	public void draw(Graphics2D g) {
+		
+		//draw bg
 		bg.draw(g);
+		
 	}
 	
 	public void handleInput() {}
