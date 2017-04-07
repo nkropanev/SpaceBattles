@@ -47,9 +47,15 @@ public class MenuState extends GameState {
 			e.printStackTrace();
 		}
 		
+		init();
+		
 	}
 	
-	public void init() {}
+	public void init() {
+		
+		InputHandler.setFalse();
+		
+	}
 	
 	public void update() {
 		handleInput();
@@ -64,7 +70,7 @@ public class MenuState extends GameState {
 		//draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString(Game.name, 80, 70);
+		g.drawString(Game.name, 90, 70);
 		
 		//draw menu options
 		g.setFont(font);
@@ -85,7 +91,7 @@ public class MenuState extends GameState {
 	public void select() {
 		
 		if(currentChoise == 0) {
-			gsm.setState(gsm.LEVELSTATE);
+			gsm.setState(GameStateManager.LEVELSTATE);
 		}
 		if(currentChoise == 1) {
 			System.exit(0);

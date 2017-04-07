@@ -30,4 +30,10 @@ public class InputHandler {
 		return keyState[i];
 	}
 	
+	public static void setFalse() {
+		for(int i = 0; i < NUMKEYS; i++) {
+			keyState[i] = false;
+		}
+	}
+	
 }

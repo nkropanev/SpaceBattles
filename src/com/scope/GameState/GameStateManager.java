@@ -6,10 +6,12 @@ public class GameStateManager {
 
 	private GameState[] gameStates;
 	private int currentState;
+	public int score;
 	
-	public static final int NUMGAMESTATES = 2;
+	public static final int NUMGAMESTATES = 3;
 	public static final int MENUSTATE = 0;
 	public static final int LEVELSTATE = 1;
+	public static final int GAMEOVER = 2;
 	
 	public GameStateManager() {
 		
@@ -26,6 +28,8 @@ public class GameStateManager {
 			gameStates[state] = new MenuState(this);
 		else if(state == LEVELSTATE)
 			gameStates[state] = new LevelState(this);
+		else if(state == GAMEOVER)
+			gameStates[state] = new GameOver(this);
 		
 	}
 	
@@ -50,6 +54,5 @@ public class GameStateManager {
 		if(gameStates[currentState] != null)
 			gameStates[currentState].draw(g);
 	}
-	
-	
+		
 }
