@@ -49,14 +49,14 @@ public class GameOver extends GameState {
 		
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString("GAME OVER", 80, 70);
+		g.drawString("GAME OVER", 40, 70);
 		
 		g.setFont(font);
 		String s = "Your score: " + gsm.score;
-		g.drawString(s, 110, 95);
+		g.drawString(s, 80, 100);
 		
 		g.setColor(color);
-		g.drawString("Back to menu", 115, 145);
+		g.drawString("Back to menu", 85, 175);
 	}
 	
 	public void handleInput() {

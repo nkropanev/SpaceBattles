@@ -1,34 +1,16 @@
 package com.scope.Entity;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+public abstract class Enemy extends MapObject {
 
-import javax.imageio.ImageIO;
-
-import com.scope.NewGame.GamePanel;
-
-public class Enemy extends MapObject {
-
-	private int currFace;
-	private int cost;
-	private BufferedImage sprite;
+	protected int cost;
+	protected double moveSpeed;
+	protected boolean canShoot;
 	
 	public Enemy(int width, int height) {
 		
-		super(ENEMY_TYPE,0 , 0, width, height);
-		this.width = width;
-		this.height = height;
-		
-		alive = true;
+		super(0 , 0, width, height);
 		direction = 0;
-		cost = 100;
-		
-		try {
-			sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemy.png"));
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		canShoot = false;
 		
 	}
 	
@@ -37,32 +19,30 @@ public class Enemy extends MapObject {
 		this.y = y;
 	}
 	
+	public void sety(int y) {
+		this.y = y;
+	}
+	
+	public void setMS(double ms) { moveSpeed = ms; }
+	
 	public int getCost() { return cost; }
 	
-	public void update() {
+	public void setShoot(boolean b) { canShoot = b; }
+	public boolean getShoot() { return canShoot; }
+	
+	private void getNextPosition() {
 		
-		setCollisions();
-		if(alive) {
-			if(y < GamePanel.HEIGHT) {
-				y++;
-			}
-			else {
-				y = GamePanel.HEIGHT/4;
-			}
+		if(direction == MOVE_LEFT) {
+			x -= moveSpeed;
 		}
-		if(!alive) {
-			alive = true;
-			y = GamePanel.HEIGHT/4;
+		else if(direction == MOVE_RIGHT) {
+			x += moveSpeed;
 		}
 		
 	}
 	
-	public void draw(Graphics2D g) {
-		
-		if(alive) {
-			g.drawImage(sprite, x, y, null);
-		}
-		
+	public void update() {
+		getNextPosition();
 	}
 	
 }

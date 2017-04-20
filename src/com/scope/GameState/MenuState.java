@@ -70,7 +70,7 @@ public class MenuState extends GameState {
 		//draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString(Game.name, 90, 70);
+		g.drawString(Game.name, 50, 70);
 		
 		//draw menu options
 		g.setFont(font);
@@ -82,7 +82,7 @@ public class MenuState extends GameState {
 			else {
 				g.setColor(color);
 			}
-			g.drawString(options[i], 145, 145 + i * 15);
+			g.drawString(options[i], 105, 165 + i * 15);
 			
 		}
 		

@@ -60,7 +60,7 @@ public class Background {
 	public void update() {
 		x += dx;
 		y += dy;
-		if(y == 1200)
+		if(y == 1400)
 			y = 0;
 	}
 	

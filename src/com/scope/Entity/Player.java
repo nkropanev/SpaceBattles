@@ -11,20 +11,16 @@ public class Player extends MapObject {
 
 	private int health;
 	private int maxHealth;
-	private int moveSpeed = (int)(2.3 * GamePanel.SCALE);
+	private int moveSpeed = (int)(3);
 	private BufferedImage sprite;
 	private boolean flinching;
 	private long flinchTimer;
 	
 	public Player(int width, int height) {
 		
-		super(PLAYER_TYPE, 0, 0, width, height);
-		
-		this.width = width;
-		this.height = height;
+		super(0, 0, width, height);
 		
 		health = maxHealth = 3;
-		alive = true;
 		direction = 0;
 		
 		try {
@@ -62,8 +58,6 @@ public class Player extends MapObject {
 	
 	public void update() {
 		
-		setCollisions();
-		
 		if(flinching) {
 			long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
 			if(elapsed > 1000) {
@@ -90,7 +84,7 @@ public class Player extends MapObject {
 	public void draw(Graphics2D g) {
 		
 		if(!flinching) {
-			g.drawImage(sprite, x, y, null); 
+			g.drawImage(sprite, (int)x, (int)y, null);
 		}
 		
 	}

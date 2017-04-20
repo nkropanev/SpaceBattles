@@ -1,15 +1,14 @@
 package com.scope.Entity;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
 
 import com.scope.Animation.Animation;
+import com.scope.NewGame.GamePanel;
 
 public abstract class MapObject {
-	
-	//types
-	public static final int PLAYER_TYPE = -1;
-	public static final int PMISSILE_TYPE = -2;
-	public static final int ENEMY_TYPE = 1;
 	
 	//moving
 	public static final int NO_MOVE = 0;
@@ -18,13 +17,10 @@ public abstract class MapObject {
 	public int direction;
 	
 	//dimensions
-	protected int x;
-	protected int y;
+	protected double x;
+	protected double y;
 	protected int width;
 	protected int height;
-	protected Rectangle collisionRect;
-	protected Rectangle hotRect;
-	protected int type;
 	protected boolean alive;
 	
 	//attributes
@@ -35,30 +31,22 @@ public abstract class MapObject {
 	protected Animation animation;
 	
 	
-	public MapObject(int spriteType, int x, int y, int w, int h) {
+	public MapObject(int x, int y, int w, int h) {
 		
 		this.x = x;
 		this.y = y;
 		width = w;
 		height = h;
 		alive = true;
-		type = spriteType;
 		
 	}
 	
-	public int getx() { return x; }
-	public int gety() { return y; }
+	public int getx() { return (int)x; }
+	public int gety() { return (int)y; }
 	public int getHeight() { return height; }
 	public int getWidth() { return width; }
 	public boolean isAlive() { return alive; }
 	public void setAlive(boolean a) { alive = a; }
-	public int type() { return type; }
-	
-	public void setCollisions() {
-		
-		collisionRect = new Rectangle(x, y, width, height);
-		
-	}
 	
 	public boolean intersects(MapObject o) {
 		
@@ -70,7 +58,26 @@ public abstract class MapObject {
 	
 	public Rectangle getRectangle() {
 		
-		return new Rectangle(x, y, width/2, height/2);
+		return new Rectangle((int)x, (int)y, width/GamePanel.SCALE, height/GamePanel.SCALE);
+		
+	}
+	
+	public BufferedImage[] loadImages(String first, int n) {
+		
+		BufferedImage[] buff = new BufferedImage[n];
+		
+		try {
+			
+			for(int i = 0; i<n; i++) {
+				buff[i] = ImageIO.read(
+						getClass().getResourceAsStream(first + i + ".png"));
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return buff;
 		
 	}
 	
