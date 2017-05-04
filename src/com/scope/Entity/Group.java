@@ -24,7 +24,12 @@ public class Group {
 	private boolean canShoot;
 	private long reloadTimer;
 	private boolean reload;
+<<<<<<< HEAD
 	private int px;
+=======
+	private int ax;
+	private int ay;
+>>>>>>> origin/master
 	
 	public ArrayList<Bg1> bg1Arr;
 	public ArrayList<Bg1> bg11Arr;
@@ -191,7 +196,11 @@ public class Group {
 		
 		for(int i = 0; i < bg4Num; i++) {
 			
+<<<<<<< HEAD
 			Bg4 bg4 = new Bg4(13*GamePanel.SCALE, 14);
+=======
+			Bg4 bg4 = new Bg4(13*GamePanel.SCALE, 14*GamePanel.SCALE);
+>>>>>>> origin/master
 			bg4.setPosition(GamePanel.WIDTH/2-27 + GamePanel.WIDTH/11*i, 40);
 			bg4.setMS(groupMS);
 			bg4Arr.add(bg4);
@@ -199,7 +208,11 @@ public class Group {
 		}
 		
 		for(int i = 0; i < bg3Num; i++) {
+<<<<<<< HEAD
 			Bg3 bg3 = new Bg3(13*GamePanel.SCALE, 14);
+=======
+			Bg3 bg3 = new Bg3(13*GamePanel.SCALE, 14*GamePanel.SCALE);
+>>>>>>> origin/master
 			bg3.setPosition(GamePanel.WIDTH/3-8 + GamePanel.WIDTH/11*i, 55);
 			bg3.setMS(groupMS);
 			if(i%2 == 1) bg3.set2ndAnimation();
@@ -208,7 +221,11 @@ public class Group {
 		
 		for(int i = 0; i < bg2Num; i++) {
 			
+<<<<<<< HEAD
 			Bg2 bg2 = new Bg2(13*GamePanel.SCALE, 14);
+=======
+			Bg2 bg2 = new Bg2(13*GamePanel.SCALE, 14*GamePanel.SCALE);
+>>>>>>> origin/master
 			bg2.setPosition(GamePanel.WIDTH/4-9 + GamePanel.WIDTH/11*i, 70);
 			bg2.setMS(groupMS);
 			if(i%2 == 0) bg2.set2ndAnimation();
@@ -217,13 +234,21 @@ public class Group {
 		
 		for(int i = 0; i < bg1Num; i++) {
 
+<<<<<<< HEAD
 			Bg1 bg1 = new Bg1(13*GamePanel.SCALE, 14);
+=======
+			Bg1 bg1 = new Bg1(13*GamePanel.SCALE, 14*GamePanel.SCALE);
+>>>>>>> origin/master
 			bg1.setPosition(GamePanel.WIDTH/8 + GamePanel.WIDTH/11*i, 85);
 			bg1.setMS(groupMS);
 			if(i%2 == 1) bg1.set2ndAnimation();
 			bg1Arr.add(bg1);
 			
+<<<<<<< HEAD
 			Bg1 bg11 = new Bg1(13*GamePanel.SCALE, 14);
+=======
+			Bg1 bg11 = new Bg1(13*GamePanel.SCALE, 14*GamePanel.SCALE);
+>>>>>>> origin/master
 			bg11.setPosition(GamePanel.WIDTH/8 + GamePanel.WIDTH/11*i, 100);
 			bg11.setMS(groupMS);
 			bg11.setShoot(true);
@@ -355,11 +380,57 @@ public class Group {
 		
 	}
 	
+<<<<<<< HEAD
+=======
+	public void choseBG(int pX) {
+		
+		for(int i = 0; i < bg1Arr.size(); i++) {
+
+			//bg1Arr
+			if(bg1Arr.get(i).isAlive() && bg1Arr.get(i).getShoot() && bg1Arr.get(i).getx()==pX) {
+				if(canShoot) {
+					ax = bg1Arr.get(i).getx()+bg1Arr.get(i).getWidth()/2;
+					ay = bg1Arr.get(i).gety()+bg1Arr.get(i).getHeight();
+				}
+			}
+			/*
+			//bg11Arr
+			if(bg11Arr.get(i).isAlive()) {
+				
+			}
+			
+			//bg2Arr
+			if(i>0 && i<bg1Arr.size()-1) {
+				if(bg2Arr.get(i-1).isAlive()) {
+					
+				}
+			}
+			
+			//bg3Arr
+			if(i>1 && i<bg1Arr.size()-2) {
+				if(bg3Arr.get(i-2).isAlive()) {
+					
+				}
+			}
+			
+			//bg4Arr
+			if(i>2 && i<bg1Arr.size()-3) {
+				if(bg4Arr.get(i).isAlive()) {
+					
+				}
+			}
+			*/
+		}	
+		
+	}
+	
+>>>>>>> origin/master
 	public void setGroupMS(double ms) { groupMS = ms; }
 	public double getGroupMS() { return groupMS; }
 	public void setReloadTimer(long t) { reloadTimer = t; }
 	public long getReloadTimer() { return reloadTimer; }
 	public boolean getShoot() { return canShoot; }
+<<<<<<< HEAD
 	public void setShoot(boolean b) { canShoot = b; }
 	public void setReload(boolean b) { reload = b; }
 	public void setPX(int x) { px = x; }
@@ -368,6 +439,14 @@ public class Group {
 		
 		//doesn't work
 		//reload
+=======
+	public int getAX() { return ax; }
+	public int getAY() { return ay; }
+	public void setReload(boolean b) { reload = b; }
+	
+	public void update() {
+		
+>>>>>>> origin/master
 		if(!canShoot && !reload) {
 			long elapsed = (System.nanoTime() - reloadTimer) / 1000000;
 			if(elapsed > 1000) {
@@ -380,9 +459,12 @@ public class Group {
 			bg4Arr.get(i).direction = direction;
 			if(bg4Arr.get(i).isAlive()) {
 				bg4Arr.get(i).update();
+<<<<<<< HEAD
 				if(bg4Arr.get(i).canShoot) {
 					
 				}
+=======
+>>>>>>> origin/master
 				if(bg4Arr.get(i).gety()>=GamePanel.HEIGHT) {
 					moveBack();
 					LevelState.killPlayer();

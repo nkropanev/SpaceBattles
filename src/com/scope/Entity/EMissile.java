@@ -9,7 +9,11 @@ import com.scope.NewGame.GamePanel;
 
 public class EMissile extends MapObject {
 
+<<<<<<< HEAD
 	private int flightSpeed = (int)(2.0 * GamePanel.SCALE);
+=======
+	private int flightSpeed = (int)(2.7 * GamePanel.SCALE);
+>>>>>>> origin/master
 	private BufferedImage sprite;
 	private boolean shot;
 	private boolean flying;
@@ -45,8 +49,11 @@ public class EMissile extends MapObject {
 		flying = b;
 	}
 	
+<<<<<<< HEAD
 	public boolean isFlying() { return flying; }
 	
+=======
+>>>>>>> origin/master
 	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;

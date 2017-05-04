@@ -76,7 +76,10 @@ public class LevelState extends GameState {
 			
 			//init emissile
 			emissile = new EMissile(3*GamePanel.SCALE, 4*GamePanel.SCALE);
+<<<<<<< HEAD
 			emissile.setPosition(128, 128);
+=======
+>>>>>>> origin/master
 			
 			//hud
 			hud = new HUD(player);
@@ -95,14 +98,27 @@ public class LevelState extends GameState {
 	public static void killPlayer() { playerShouldDie = true; }
 	
 	public void update() {
+<<<<<<< HEAD
 		
+=======
+>>>>>>> origin/master
 		bg.update();
 		player.update();
 		pmissile.setDX(player.getx() + 5);
 		pmissile.update();
 		group.update();
+<<<<<<< HEAD
 		
 		//emissile.update();
+=======
+		group.choseBG(player.getx());
+		if(group.getShoot()) {
+			emissile.setPosition(group.getAX(), group.getAY());
+			emissile.setFlying(true);
+		}
+		emissile.update();
+		emissile.checkExpl(player);
+>>>>>>> origin/master
 		
 		//collision of the player and the badGuy
 		for(int i = 0; i < group.bg4Arr.size(); i++) {
@@ -197,7 +213,11 @@ public class LevelState extends GameState {
 		group.draw(g);
 		
 		//draw emissile
+<<<<<<< HEAD
 		//emissile.draw(g);
+=======
+		emissile.draw(g);
+>>>>>>> origin/master
 		
 		//draw hud
 		hud.draw(g);
