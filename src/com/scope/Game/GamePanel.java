@@ -1,4 +1,4 @@
-package com.scope.NewGame;
+package com.scope.Game;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -114,8 +114,5 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	public void keyReleased(KeyEvent k) {
 		InputHandler.setKey(k.getKeyCode(), false);
 	}
-	
-
-
 	
 }

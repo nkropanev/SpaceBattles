@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import com.scope.Game.Game;
+import com.scope.Game.GamePanel;
 import com.scope.InputHandler.InputHandler;
-import com.scope.NewGame.Game;
-import com.scope.NewGame.GamePanel;
 
 public class MenuState extends GameState {
 

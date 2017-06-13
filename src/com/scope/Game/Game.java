@@ -1,4 +1,4 @@
-package com.scope.NewGame;
+package com.scope.Game;
 
 import javax.swing.JFrame;
 

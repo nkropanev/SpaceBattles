@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import com.scope.Animation.Animation;
-import com.scope.NewGame.GamePanel;
+import com.scope.Game.GamePanel;
 
 public abstract class MapObject {
 	

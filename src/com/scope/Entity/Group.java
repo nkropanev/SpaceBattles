@@ -7,8 +7,8 @@ import com.scope.Entity.Enemies.Bg1;
 import com.scope.Entity.Enemies.Bg2;
 import com.scope.Entity.Enemies.Bg3;
 import com.scope.Entity.Enemies.Bg4;
+import com.scope.Game.GamePanel;
 import com.scope.GameState.LevelState;
-import com.scope.NewGame.GamePanel;
 
 public class Group {
 
@@ -18,18 +18,9 @@ public class Group {
 	private static final int bg3Num = 4;
 	
 	private int count;
-	public boolean empty;
+	private boolean empty;
 	private int direction;
 	private double groupMS;
-	private boolean canShoot;
-	private long reloadTimer;
-	private boolean reload;
-<<<<<<< HEAD
-	private int px;
-=======
-	private int ax;
-	private int ay;
->>>>>>> origin/master
 	
 	public ArrayList<Bg1> bg1Arr;
 	public ArrayList<Bg1> bg11Arr;
@@ -37,11 +28,9 @@ public class Group {
 	public ArrayList<Bg3> bg3Arr;
 	public ArrayList<Bg4> bg4Arr;
 	
-	public Group(double ms, long rs) {
+	public Group(double ms) {
 		
 		groupMS = ms;
-		reloadTimer = rs;
-		canShoot = true;
 		
 		initNewGroup();
 		
@@ -69,10 +58,10 @@ public class Group {
 		
 	}
 	
-	public boolean checkExplBg1(Bg1 bg, PMissile pm) {
+	public boolean checkExplBgAll(Enemy en, PMissile pm) {
 		
-		if(bg.intersects(pm)) {
-			bg.setAlive(false);
+		if(en.intersects(pm)) {
+			en.setAlive(false);
 			pm.setFlying(false);
 			pm.setPosition(pm.getDX(), 
 					GamePanel.HEIGHT-20*GamePanel.SCALE/GamePanel.SCALE-2*GamePanel.SCALE);
@@ -82,98 +71,10 @@ public class Group {
 		
 	}
 	
-	public boolean checkExplBg2(Bg2 bg, PMissile pm) {
+	public boolean checkIntersectsAll(Enemy en, Player p) {
 		
-		if(bg.intersects(pm)) {
-			bg.setAlive(false);
-			pm.setFlying(false);
-			pm.setPosition(pm.getDX(), 
-					GamePanel.HEIGHT-20*GamePanel.SCALE/GamePanel.SCALE-2*GamePanel.SCALE);
-			return true;
-		}
-		return false;
-		
-	}
-
-	public boolean checkExplBg3(Bg3 bg, PMissile pm) {
-	
-		if(bg.intersects(pm)) {
-			bg.setAlive(false);
-			pm.setFlying(false);
-			pm.setPosition(pm.getDX(), 
-				GamePanel.HEIGHT-20*GamePanel.SCALE/GamePanel.SCALE-2*GamePanel.SCALE);
-			return true;
-		}
-		return false;
-	
-	}
-
-	public boolean checkExplBg4(Bg4 bg, PMissile pm) {
-	
-		if(bg.intersects(pm)) {
-			bg.setAlive(false);
-			pm.setFlying(false);
-			pm.setPosition(pm.getDX(), 
-				GamePanel.HEIGHT-20*GamePanel.SCALE/GamePanel.SCALE-2*GamePanel.SCALE);
-			return true;
-		}
-		return false;
-	
-	}
-
-	
-	public boolean checkIntersectsBg1(Bg1 bg, Player p) {
-		
-		if(bg.intersects(p) && !p.isFlinch()) {
-			bg.alive = false;
-			p.setHealth(p.getHealth()-1);
-			if(p.getHealth() < 0) p.setHealth(0);
-			if(p.getHealth() == 0) p.setAlive(false);
-			p.setFlinch(true);
-			p.setFlinchTimer(System.nanoTime());
-			moveBack();
-			return true;
-		}
-		return false;
-		
-	}
-	
-	public boolean checkIntersectsBg2(Bg2 bg, Player p) {
-		
-		if(bg.intersects(p) && !p.isFlinch()) {
-			bg.alive = false;
-			p.setHealth(p.getHealth()-1);
-			if(p.getHealth() < 0) p.setHealth(0);
-			if(p.getHealth() == 0) p.setAlive(false);
-			p.setFlinch(true);
-			p.setFlinchTimer(System.nanoTime());
-			moveBack();
-			return true;
-		}
-		return false;
-		
-	}
-	
-	public boolean checkIntersectsBg3(Bg3 bg, Player p) {
-		
-		if(bg.intersects(p) && !p.isFlinch()) {
-			bg.alive = false;
-			p.setHealth(p.getHealth()-1);
-			if(p.getHealth() < 0) p.setHealth(0);
-			if(p.getHealth() == 0) p.setAlive(false);
-			p.setFlinch(true);
-			p.setFlinchTimer(System.nanoTime());
-			moveBack();
-			return true;
-		}
-		return false;
-		
-	}
-	
-	public boolean checkIntersectsBg4(Bg4 bg, Player p) {
-		
-		if(bg.intersects(p) && !p.isFlinch()) {
-			bg.alive = false;
+		if(en.intersects(p) && !p.isFlinch()) {
+			en.alive = false;
 			p.setHealth(p.getHealth()-1);
 			if(p.getHealth() < 0) p.setHealth(0);
 			if(p.getHealth() == 0) p.setAlive(false);
@@ -196,11 +97,7 @@ public class Group {
 		
 		for(int i = 0; i < bg4Num; i++) {
 			
-<<<<<<< HEAD
 			Bg4 bg4 = new Bg4(13*GamePanel.SCALE, 14);
-=======
-			Bg4 bg4 = new Bg4(13*GamePanel.SCALE, 14*GamePanel.SCALE);
->>>>>>> origin/master
 			bg4.setPosition(GamePanel.WIDTH/2-27 + GamePanel.WIDTH/11*i, 40);
 			bg4.setMS(groupMS);
 			bg4Arr.add(bg4);
@@ -208,11 +105,7 @@ public class Group {
 		}
 		
 		for(int i = 0; i < bg3Num; i++) {
-<<<<<<< HEAD
 			Bg3 bg3 = new Bg3(13*GamePanel.SCALE, 14);
-=======
-			Bg3 bg3 = new Bg3(13*GamePanel.SCALE, 14*GamePanel.SCALE);
->>>>>>> origin/master
 			bg3.setPosition(GamePanel.WIDTH/3-8 + GamePanel.WIDTH/11*i, 55);
 			bg3.setMS(groupMS);
 			if(i%2 == 1) bg3.set2ndAnimation();
@@ -221,11 +114,7 @@ public class Group {
 		
 		for(int i = 0; i < bg2Num; i++) {
 			
-<<<<<<< HEAD
 			Bg2 bg2 = new Bg2(13*GamePanel.SCALE, 14);
-=======
-			Bg2 bg2 = new Bg2(13*GamePanel.SCALE, 14*GamePanel.SCALE);
->>>>>>> origin/master
 			bg2.setPosition(GamePanel.WIDTH/4-9 + GamePanel.WIDTH/11*i, 70);
 			bg2.setMS(groupMS);
 			if(i%2 == 0) bg2.set2ndAnimation();
@@ -234,24 +123,15 @@ public class Group {
 		
 		for(int i = 0; i < bg1Num; i++) {
 
-<<<<<<< HEAD
 			Bg1 bg1 = new Bg1(13*GamePanel.SCALE, 14);
-=======
-			Bg1 bg1 = new Bg1(13*GamePanel.SCALE, 14*GamePanel.SCALE);
->>>>>>> origin/master
 			bg1.setPosition(GamePanel.WIDTH/8 + GamePanel.WIDTH/11*i, 85);
 			bg1.setMS(groupMS);
 			if(i%2 == 1) bg1.set2ndAnimation();
 			bg1Arr.add(bg1);
 			
-<<<<<<< HEAD
 			Bg1 bg11 = new Bg1(13*GamePanel.SCALE, 14);
-=======
-			Bg1 bg11 = new Bg1(13*GamePanel.SCALE, 14*GamePanel.SCALE);
->>>>>>> origin/master
 			bg11.setPosition(GamePanel.WIDTH/8 + GamePanel.WIDTH/11*i, 100);
 			bg11.setMS(groupMS);
-			bg11.setShoot(true);
 			if(i%2 == 1) bg11.set2ndAnimation();
 			bg11Arr.add(bg11);
 		}
@@ -379,92 +259,18 @@ public class Group {
 		}
 		
 	}
-	
-<<<<<<< HEAD
-=======
-	public void choseBG(int pX) {
-		
-		for(int i = 0; i < bg1Arr.size(); i++) {
 
-			//bg1Arr
-			if(bg1Arr.get(i).isAlive() && bg1Arr.get(i).getShoot() && bg1Arr.get(i).getx()==pX) {
-				if(canShoot) {
-					ax = bg1Arr.get(i).getx()+bg1Arr.get(i).getWidth()/2;
-					ay = bg1Arr.get(i).gety()+bg1Arr.get(i).getHeight();
-				}
-			}
-			/*
-			//bg11Arr
-			if(bg11Arr.get(i).isAlive()) {
-				
-			}
-			
-			//bg2Arr
-			if(i>0 && i<bg1Arr.size()-1) {
-				if(bg2Arr.get(i-1).isAlive()) {
-					
-				}
-			}
-			
-			//bg3Arr
-			if(i>1 && i<bg1Arr.size()-2) {
-				if(bg3Arr.get(i-2).isAlive()) {
-					
-				}
-			}
-			
-			//bg4Arr
-			if(i>2 && i<bg1Arr.size()-3) {
-				if(bg4Arr.get(i).isAlive()) {
-					
-				}
-			}
-			*/
-		}	
-		
-	}
-	
->>>>>>> origin/master
 	public void setGroupMS(double ms) { groupMS = ms; }
 	public double getGroupMS() { return groupMS; }
-	public void setReloadTimer(long t) { reloadTimer = t; }
-	public long getReloadTimer() { return reloadTimer; }
-	public boolean getShoot() { return canShoot; }
-<<<<<<< HEAD
-	public void setShoot(boolean b) { canShoot = b; }
-	public void setReload(boolean b) { reload = b; }
-	public void setPX(int x) { px = x; }
+	public boolean isEmpty() { return empty; }
 	
 	public void update() {
-		
-		//doesn't work
-		//reload
-=======
-	public int getAX() { return ax; }
-	public int getAY() { return ay; }
-	public void setReload(boolean b) { reload = b; }
-	
-	public void update() {
-		
->>>>>>> origin/master
-		if(!canShoot && !reload) {
-			long elapsed = (System.nanoTime() - reloadTimer) / 1000000;
-			if(elapsed > 1000) {
-				canShoot = true;
-			}
-		}
 		
 		//upd bg4Arr
-		for(int i = 0; i<bg4Arr.size(); i++) {
+		for(int i = 0; i < bg4Arr.size(); i++) {
 			bg4Arr.get(i).direction = direction;
 			if(bg4Arr.get(i).isAlive()) {
 				bg4Arr.get(i).update();
-<<<<<<< HEAD
-				if(bg4Arr.get(i).canShoot) {
-					
-				}
-=======
->>>>>>> origin/master
 				if(bg4Arr.get(i).gety()>=GamePanel.HEIGHT) {
 					moveBack();
 					LevelState.killPlayer();
@@ -483,10 +289,6 @@ public class Group {
 					LevelState.killPlayer();
 				}
 			}
-			else {
-				if(i>0 && i<bg1Arr.size()-1)
-					bg2Arr.get(i-1).setShoot(true);
-			}
 			
 			//upd bg11Arr
 			bg11Arr.get(i).direction = direction;
@@ -497,9 +299,7 @@ public class Group {
 					LevelState.killPlayer();
 				}
 			}
-			else {
-				bg1Arr.get(i).setShoot(true);
-			}
+			
 			//upd bg2Arr
 			if(i>0 && i<bg1Arr.size()-1) {
 				bg2Arr.get(i-1).direction = direction;
@@ -509,10 +309,6 @@ public class Group {
 						moveBack();
 						LevelState.killPlayer();
 					}
-				}
-				else {
-					if(i>1 && i<bg1Arr.size()-2)
-						bg3Arr.get(i-2).setShoot(true);
 				}
 				
 			}
@@ -526,10 +322,6 @@ public class Group {
 						moveBack();
 						LevelState.killPlayer();
 					}
-				}
-				else {
-					if(i>2 && i<bg1Arr.size()-3)
-						bg4Arr.get(i-3).setShoot(true);
 				}
 				
 			}
