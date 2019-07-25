@@ -1,18 +1,11 @@
 package com.scope.GameState;
 
-import java.awt.Graphics2D;
 
-public abstract class GameState {
+import java.awt.*;
 
-	protected GameStateManager gsm;
-	
-	public GameState(GameStateManager gsm) {
-		this.gsm = gsm;
-	}
-	
-	public abstract void init();
-	public abstract void update();
-	public abstract void draw(Graphics2D g);
-	public abstract void handleInput();
-	
+public interface GameState {
+    void init();
+    void update();
+    void draw(Graphics2D g);
+    void handleInput();
 }

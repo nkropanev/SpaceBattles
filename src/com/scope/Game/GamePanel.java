@@ -15,22 +15,22 @@ import com.scope.InputHandler.InputHandler;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 
-	//dimensions
+	// dimensions
 	public static final int WIDTH = 240;
 	public static final int HEIGHT = 280;
 	public static final int SCALE = 2;
 	
-	//game thread
+	// game thread
 	private Thread thread;
 	private boolean running;
 	private int FPS = 60;
 	private long targetTime = 1000 / FPS;
 	
-	//image
+	// image
 	private BufferedImage image;
 	private Graphics2D g;
 	
-	//game state manager
+	// game state manager
 	private GameStateManager gsm;
 	
 	public GamePanel() {
@@ -68,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		long elapsed;
 		long wait;
 		
-		//game loop
+		// game loop
 		while(running) {
 			
 			start = System.nanoTime();

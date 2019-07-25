@@ -14,7 +14,9 @@ import com.scope.Entity.Player;
 import com.scope.Game.GamePanel;
 import com.scope.InputHandler.InputHandler;
 
-public class LevelState extends GameState {
+import static com.scope.Entity.MapObject.*;
+
+public class LevelState extends GameStateImpl {
 
 	private Background bg;
 	private Player player;
@@ -40,41 +42,35 @@ public class LevelState extends GameState {
 		playerShouldDie = false;
 		
 		try {
-			
-			//load high score
+			// load high score
 			try {
-				
 				Scanner in = new Scanner(new File("res/HighScore.txt"));
 				highScore = in.nextInt();
 				in.close();
-				
-			}
-			catch(FileNotFoundException e) {
+			} catch(FileNotFoundException e) {
 				highScore = 0;
 			}
 			
-			//init bg
+			// init bg
 			bg = new Background("/Sprites/Background/background.png", 1);
 			bg.setVector(0, 0.5);
 			
-			//init player
+			// init player
 			player = new Player(13*GamePanel.SCALE,	20*GamePanel.SCALE);
 			player.setPosition((GamePanel.WIDTH-player.getWidth()/2)/2, 
 					GamePanel.HEIGHT-player.getHeight()/GamePanel.SCALE-2*GamePanel.SCALE);
-			
-			
-			//init pmissile
+
+			// init pmissile
 			pmissile = new PMissile(3*GamePanel.SCALE, 4*GamePanel.SCALE);
 			pmissile.setPosition(player.getx()+5, player.gety());
 			
-			//init group of enemies
+			// init group of enemies
 			group = new Group(enemyMS);
 			
-			//hud
+			// hud
 			hud = new HUD(player);
 
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -93,40 +89,42 @@ public class LevelState extends GameState {
 		pmissile.update();
 		group.update();
 		
-		//collision of the player and the badGuy
-		for(int i = 0; i < group.bg4Arr.size(); i++) {
-			if(group.bg4Arr.get(i).isAlive() && !player.isFlinch())
-				if(group.checkIntersectsAll(group.bg4Arr.get(i), player) ||
-						group.checkExplBgAll(group.bg4Arr.get(i), pmissile))
-					score += group.bg4Arr.get(i).getCost();
+		// collision of the player and the badGuy
+		for (int i = 0; i < group.getBg4Arr().size(); i++) {
+			if (group.getBg4Arr().get(i).isAlive() && !player.isFlinch()) {
+				if (group.checkIntersectsAll(group.getBg4Arr().get(i), player) ||
+						group.checkExplBgAll(group.getBg4Arr().get(i), pmissile)) {
+					score += group.getBg4Arr().get(i).getCost();
+				}
+			}
 		}
 		
-		for(int i = 0; i < group.bg3Arr.size(); i++) {
-			if(group.bg3Arr.get(i).isAlive() && !player.isFlinch())
-				if(group.checkIntersectsAll(group.bg3Arr.get(i), player) ||
-						group.checkExplBgAll(group.bg3Arr.get(i), pmissile))
-					score += group.bg3Arr.get(i).getCost();
+		for(int i = 0; i < group.getBg3Arr().size(); i++) {
+			if(group.getBg3Arr().get(i).isAlive() && !player.isFlinch())
+				if(group.checkIntersectsAll(group.getBg3Arr().get(i), player) ||
+						group.checkExplBgAll(group.getBg3Arr().get(i), pmissile))
+					score += group.getBg3Arr().get(i).getCost();
 		}
 		
-		for(int i = 0; i < group.bg2Arr.size(); i++) {
-			if(group.bg2Arr.get(i).isAlive() && !player.isFlinch())
-				if(group.checkIntersectsAll(group.bg2Arr.get(i), player) ||
-						group.checkExplBgAll(group.bg2Arr.get(i), pmissile))
-					score += group.bg2Arr.get(i).getCost();
+		for(int i = 0; i < group.getBg2Arr().size(); i++) {
+			if(group.getBg2Arr().get(i).isAlive() && !player.isFlinch())
+				if(group.checkIntersectsAll(group.getBg2Arr().get(i), player) ||
+						group.checkExplBgAll(group.getBg2Arr().get(i), pmissile))
+					score += group.getBg2Arr().get(i).getCost();
 		}
 		
-		for(int i = 0; i < group.bg1Arr.size(); i++) {
-			if(group.bg1Arr.get(i).isAlive() && !player.isFlinch())
-				if(group.checkIntersectsAll(group.bg1Arr.get(i), player) ||
-						group.checkExplBgAll(group.bg1Arr.get(i), pmissile))
-					score += group.bg1Arr.get(i).getCost();
+		for(int i = 0; i < group.getBg1Arr().size(); i++) {
+			if(group.getBg1Arr().get(i).isAlive() && !player.isFlinch())
+				if(group.checkIntersectsAll(group.getBg1Arr().get(i), player) ||
+						group.checkExplBgAll(group.getBg1Arr().get(i), pmissile))
+					score += group.getBg1Arr().get(i).getCost();
 		}
 		
-		for(int i = 0; i < group.bg11Arr.size(); i++) {
-			if(group.bg11Arr.get(i).isAlive() && !player.isFlinch())
-				if(group.checkIntersectsAll(group.bg11Arr.get(i), player) ||
-						group.checkExplBgAll(group.bg11Arr.get(i), pmissile))
-					score += group.bg11Arr.get(i).getCost();	
+		for(int i = 0; i < group.getBg11Arr().size(); i++) {
+			if(group.getBg11Arr().get(i).isAlive() && !player.isFlinch())
+				if(group.checkIntersectsAll(group.getBg11Arr().get(i), player) ||
+						group.checkExplBgAll(group.getBg11Arr().get(i), pmissile))
+					score += group.getBg11Arr().get(i).getCost();
 		}
 		
 		pmissile.checkAttack(player);
@@ -152,16 +150,14 @@ public class LevelState extends GameState {
 		if(player.getHealth() == 0) {
 			
 			try {
-				
 				PrintWriter out = new PrintWriter(new File("res/HighScore.txt"));
 				out.print(highScore);
 				out.close();
-				
 			}
 			catch(FileNotFoundException e) {
 			}
 			
-			gsm.score = score;
+			gsm.setScore(score);
 			gsm.setState(GameStateManager.GAMEOVER);
 			
 		}
@@ -171,47 +167,37 @@ public class LevelState extends GameState {
 	}
 	
 	public void draw(Graphics2D g) {
-
-		//draw bg
+		// draw bg
 		bg.draw(g);
-		
-		//draw player
+		// draw player
 		player.draw(g);
-		
-		//draw pmissile
+		// draw pmissile
 		pmissile.draw(g);
-		
-		//draw alive enemies
+		// draw alive enemies
 		group.draw(g);
-		
-		//draw hud
+		// draw hud
 		hud.draw(g);
-		
 	}
 	
 	public void handleInput() {
-		
 		if(InputHandler.isPressed(InputHandler.LEFT)) {
-			player.direction = 1;
-			pmissile.direction = 1;
+			player.setDirection(MOVE_LEFT);
+			pmissile.setDirection(MOVE_LEFT);
 		}
 		else if(InputHandler.isPressed(InputHandler.RIGHT)) {
-			player.direction = 2;
-			pmissile.direction = 2;
+			player.setDirection(MOVE_RIGHT);
+			pmissile.setDirection(MOVE_RIGHT);
 		}
 		else {
-			player.direction = 0;
-			pmissile.direction = 0;
+			player.setDirection(NO_MOVE);
+			pmissile.setDirection(NO_MOVE);
 		}
-		
 		if(InputHandler.isPressed(InputHandler.SPACE)) {
 			pmissile.setShoot(true);
 		}
-		
 		if(!InputHandler.isPressed(InputHandler.SPACE)) {
 			pmissile.setShoot(false);
 		}
-		
 	}
 
 	

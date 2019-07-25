@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import com.scope.Game.GamePanel;
 import com.scope.InputHandler.InputHandler;
 
-public class GameOver extends GameState {
+public class GameOver extends GameStateImpl {
 
 	private Color titleColor;
 	private Color color;
@@ -21,11 +21,8 @@ public class GameOver extends GameState {
 	}
 	
 	public void init() {
-		
 		InputHandler.setFalse();
-		
 		try {
-			
 			bgColor = Color.BLACK;
 			titleColor = Color.WHITE;
 			color = Color.YELLOW;
@@ -35,7 +32,6 @@ public class GameOver extends GameState {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void update() {
@@ -52,7 +48,7 @@ public class GameOver extends GameState {
 		g.drawString("GAME OVER", 40, 70);
 		
 		g.setFont(font);
-		String s = "Your score: " + gsm.score;
+		String s = "Your score: " + gsm.getScore();
 		g.drawString(s, 80, 100);
 		
 		g.setColor(color);

@@ -8,12 +8,11 @@ import com.scope.Game.Game;
 import com.scope.Game.GamePanel;
 import com.scope.InputHandler.InputHandler;
 
-public class MenuState extends GameState {
+public class MenuState extends GameStateImpl {
 
-	//private Background bg;
 	private Color bgColor;
 	
-	private int currentChoise = 0;
+	private int currentChoice = 0;
 	private String[] options = {
 			"Start",
 			"Quit"
@@ -27,34 +26,27 @@ public class MenuState extends GameState {
 	private Font font;
 	
 	public MenuState(GameStateManager gsm) {
-		
 		super(gsm);
 		
 		try {
-			
-			//set backgrond
+			// set background
 			bgColor = Color.BLACK;
 			
-			//set fonts and colors
+			// set fonts and colors
 			titleColor = Color.WHITE;
 			color = Color.WHITE;
 			color1 = Color.YELLOW;
 			titleFont = new Font("Times New Roman", Font.PLAIN, 28);
 			font = new Font("Arial", Font.PLAIN, 14);
-			
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		init();
-		
 	}
 	
 	public void init() {
-		
 		InputHandler.setFalse();
-		
 	}
 	
 	public void update() {
@@ -62,7 +54,6 @@ public class MenuState extends GameState {
 	}
 	
 	public void draw(Graphics2D g) {
-		
 		//draw bg
 		g.setColor(bgColor);
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
@@ -70,48 +61,45 @@ public class MenuState extends GameState {
 		//draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString(Game.name, 50, 70);
+		g.drawString(Game.NAME, 25, 70);
 		
 		//draw menu options
 		g.setFont(font);
-		for(int i = 0; i < options.length; i++) {
-			
-			if(i == currentChoise) {
+		for (int i = 0; i < options.length; i++) {
+			if (i == currentChoice) {
 				g.setColor(color1);
-			}
-			else {
+			} else {
 				g.setColor(color);
 			}
 			g.drawString(options[i], 105, 165 + i * 15);
-			
 		}
-		
 	}
 	
 	public void select() {
-		
-		if(currentChoise == 0) {
+		if (currentChoice == 0) {
 			gsm.setState(GameStateManager.LEVELSTATE);
 		}
-		if(currentChoise == 1) {
+		if (currentChoice == 1) {
 			System.exit(0);
 		}
-		
 	}
 	
 	public void handleInput() {
-		if(InputHandler.isPressed(InputHandler.ENTER)) select();
-		if(InputHandler.isPressed(InputHandler.DOWN)) {
-			currentChoise++;
-			if(currentChoise == options.length)
-				currentChoise = options.length - 1;
+		if (InputHandler.isPressed(InputHandler.ENTER)) {
+			select();
 		}
-		if(InputHandler.isPressed(InputHandler.UP)) {
-			currentChoise--;
-			if(currentChoise < 0)
-				currentChoise = 0;
+		if (InputHandler.isPressed(InputHandler.DOWN)) {
+			currentChoice++;
+			if (currentChoice == options.length) {
+				currentChoice = options.length - 1;
+			}
 		}
-		
+		if (InputHandler.isPressed(InputHandler.UP)) {
+			currentChoice--;
+			if (currentChoice < 0) {
+				currentChoice = 0;
+			}
+		}
 	}
 	
 }

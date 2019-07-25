@@ -17,13 +17,13 @@ public class InputHandler {
 	
 	public static void setKey(int i, boolean b) {
 		
-		if(i == KeyEvent.VK_UP) keyState[UP] = b;
-		else if(i == KeyEvent.VK_LEFT) keyState[LEFT] = b;
-		else if(i == KeyEvent.VK_DOWN) keyState[DOWN] = b;
-		else if(i == KeyEvent.VK_RIGHT) keyState[RIGHT] = b;
-		else if(i == KeyEvent.VK_ENTER) keyState[ENTER] = b;
-		else if(i == KeyEvent.VK_ESCAPE) keyState[ESCAPE] = b;
-		else if(i == KeyEvent.VK_SPACE) keyState[SPACE] = b;
+		if (i == KeyEvent.VK_UP) keyState[UP] = b;
+		else if (i == KeyEvent.VK_LEFT) keyState[LEFT] = b;
+		else if (i == KeyEvent.VK_DOWN) keyState[DOWN] = b;
+		else if (i == KeyEvent.VK_RIGHT) keyState[RIGHT] = b;
+		else if (i == KeyEvent.VK_ENTER) keyState[ENTER] = b;
+		else if (i == KeyEvent.VK_ESCAPE) keyState[ESCAPE] = b;
+		else if (i == KeyEvent.VK_SPACE) keyState[SPACE] = b;
 	}
 	
 	public static boolean isPressed(int i) {
@@ -31,7 +31,7 @@ public class InputHandler {
 	}
 	
 	public static void setFalse() {
-		for(int i = 0; i < NUMKEYS; i++) {
+		for (int i = 0; i < NUMKEYS; i++) {
 			keyState[i] = false;
 		}
 	}

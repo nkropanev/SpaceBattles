@@ -22,11 +22,11 @@ public class Group {
 	private int direction;
 	private double groupMS;
 	
-	public ArrayList<Bg1> bg1Arr;
-	public ArrayList<Bg1> bg11Arr;
-	public ArrayList<Bg2> bg2Arr;
-	public ArrayList<Bg3> bg3Arr;
-	public ArrayList<Bg4> bg4Arr;
+	private ArrayList<Bg1> bg1Arr;
+	private ArrayList<Bg1> bg11Arr;
+	private ArrayList<Bg2> bg2Arr;
+	private ArrayList<Bg3> bg3Arr;
+	private ArrayList<Bg4> bg4Arr;
 	
 	public Group(double ms) {
 		
@@ -74,7 +74,7 @@ public class Group {
 	public boolean checkIntersectsAll(Enemy en, Player p) {
 		
 		if(en.intersects(p) && !p.isFlinch()) {
-			en.alive = false;
+			en.setAlive(false);
 			p.setHealth(p.getHealth()-1);
 			if(p.getHealth() < 0) p.setHealth(0);
 			if(p.getHealth() == 0) p.setAlive(false);
@@ -360,6 +360,46 @@ public class Group {
 			bg11Arr.get(i).draw(g);
 		}
 		
+	}
+
+	public ArrayList<Bg1> getBg1Arr() {
+		return bg1Arr;
+	}
+
+	public void setBg1Arr(ArrayList<Bg1> bg1Arr) {
+		this.bg1Arr = bg1Arr;
+	}
+
+	public ArrayList<Bg1> getBg11Arr() {
+		return bg11Arr;
+	}
+
+	public void setBg11Arr(ArrayList<Bg1> bg11Arr) {
+		this.bg11Arr = bg11Arr;
+	}
+
+	public ArrayList<Bg2> getBg2Arr() {
+		return bg2Arr;
+	}
+
+	public void setBg2Arr(ArrayList<Bg2> bg2Arr) {
+		this.bg2Arr = bg2Arr;
+	}
+
+	public ArrayList<Bg3> getBg3Arr() {
+		return bg3Arr;
+	}
+
+	public void setBg3Arr(ArrayList<Bg3> bg3Arr) {
+		this.bg3Arr = bg3Arr;
+	}
+
+	public ArrayList<Bg4> getBg4Arr() {
+		return bg4Arr;
+	}
+
+	public void setBg4Arr(ArrayList<Bg4> bg4Arr) {
+		this.bg4Arr = bg4Arr;
 	}
 	
 }

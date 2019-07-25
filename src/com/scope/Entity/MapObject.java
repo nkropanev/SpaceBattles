@@ -14,7 +14,8 @@ public abstract class MapObject {
 	public static final int NO_MOVE = 0;
 	public static final int MOVE_LEFT = 1;
 	public static final int MOVE_RIGHT = 2;
-	public int direction;
+
+	protected int direction;
 	
 	//dimensions
 	protected double x;
@@ -22,10 +23,6 @@ public abstract class MapObject {
 	protected int width;
 	protected int height;
 	protected boolean alive;
-	
-	//attributes
-	protected double initAttackFrequency;
-	protected double levelincAttackFrequency;
 	
 	//animation
 	protected Animation animation;
@@ -43,10 +40,20 @@ public abstract class MapObject {
 	
 	public int getx() { return (int)x; }
 	public int gety() { return (int)y; }
+
 	public int getHeight() { return height; }
 	public int getWidth() { return width; }
+
 	public boolean isAlive() { return alive; }
 	public void setAlive(boolean a) { alive = a; }
+
+	public int getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
 	
 	public boolean intersects(MapObject o) {
 		
@@ -57,9 +64,7 @@ public abstract class MapObject {
 	}
 	
 	public Rectangle getRectangle() {
-		
 		return new Rectangle((int)x, (int)y, width/GamePanel.SCALE, height/GamePanel.SCALE);
-		
 	}
 	
 	public BufferedImage[] loadImages(String first, int n) {
