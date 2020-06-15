@@ -1,4 +1,4 @@
-package com.scope.InputHandler;
+package com.scope.inputHandler;
 
 import java.awt.event.KeyEvent;
 

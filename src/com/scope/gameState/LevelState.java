@@ -1,4 +1,4 @@
-package com.scope.GameState;
+package com.scope.gameState;
 
 import java.awt.Graphics2D;
 import java.io.File;
@@ -6,15 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-import com.scope.Entity.Background;
-import com.scope.Entity.Group;
-import com.scope.Entity.HUD;
-import com.scope.Entity.PMissile;
-import com.scope.Entity.Player;
-import com.scope.Game.GamePanel;
-import com.scope.InputHandler.InputHandler;
+import com.scope.entity.Background;
+import com.scope.entity.Group;
+import com.scope.entity.HUD;
+import com.scope.entity.PMissile;
+import com.scope.entity.Player;
+import com.scope.game.GamePanel;
+import com.scope.inputHandler.InputHandler;
 
-import static com.scope.Entity.MapObject.*;
+import static com.scope.entity.MapObject.*;
 
 public class LevelState extends GameStateImpl {
 

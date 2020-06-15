@@ -1,11 +1,11 @@
-package com.scope.GameState;
+package com.scope.gameState;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
-import com.scope.Game.GamePanel;
-import com.scope.InputHandler.InputHandler;
+import com.scope.game.GamePanel;
+import com.scope.inputHandler.InputHandler;
 
 public class GameOver extends GameStateImpl {
 

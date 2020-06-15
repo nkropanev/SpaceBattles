@@ -1,11 +1,11 @@
-package com.scope.Entity;
+package com.scope.entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import com.scope.Game.GamePanel;
+import com.scope.game.GamePanel;
 
 public class Background {
 

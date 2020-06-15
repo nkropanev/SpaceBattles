@@ -1,4 +1,4 @@
-package com.scope.Game;
+package com.scope.game;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import com.scope.GameState.GameStateManager;
-import com.scope.InputHandler.InputHandler;
+import com.scope.gameState.GameStateManager;
+import com.scope.inputHandler.InputHandler;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {

@@ -1,4 +1,4 @@
-package com.scope.Entity;
+package com.scope.entity;
 
 public abstract class Enemy extends MapObject {
 

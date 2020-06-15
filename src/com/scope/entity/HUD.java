@@ -1,4 +1,4 @@
-package com.scope.Entity;
+package com.scope.entity;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import com.scope.GameState.LevelState;
+import com.scope.gameState.LevelState;
 
 public class HUD {
 

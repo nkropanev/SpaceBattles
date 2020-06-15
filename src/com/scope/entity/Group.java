@@ -1,14 +1,14 @@
-package com.scope.Entity;
+package com.scope.entity;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import com.scope.Entity.Enemies.Bg1;
-import com.scope.Entity.Enemies.Bg2;
-import com.scope.Entity.Enemies.Bg3;
-import com.scope.Entity.Enemies.Bg4;
-import com.scope.Game.GamePanel;
-import com.scope.GameState.LevelState;
+import com.scope.entity.enemies.Bg1;
+import com.scope.entity.enemies.Bg2;
+import com.scope.entity.enemies.Bg3;
+import com.scope.entity.enemies.Bg4;
+import com.scope.game.GamePanel;
+import com.scope.gameState.LevelState;
 
 public class Group {
 

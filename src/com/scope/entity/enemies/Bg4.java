@@ -1,10 +1,10 @@
-package com.scope.Entity.Enemies;
+package com.scope.entity.enemies;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import com.scope.Animation.Animation;
-import com.scope.Entity.Enemy;
+import com.scope.animation.Animation;
+import com.scope.entity.Enemy;
 
 public class Bg4 extends Enemy {
 

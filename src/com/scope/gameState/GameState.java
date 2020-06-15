@@ -1,4 +1,4 @@
-package com.scope.GameState;
+package com.scope.gameState;
 
 
 import java.awt.*;

@@ -1,12 +1,12 @@
-package com.scope.Entity;
+package com.scope.entity;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import com.scope.Animation.Animation;
-import com.scope.Game.GamePanel;
+import com.scope.animation.Animation;
+import com.scope.game.GamePanel;
 
 public abstract class MapObject {
 

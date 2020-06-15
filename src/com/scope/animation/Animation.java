@@ -1,4 +1,4 @@
-package com.scope.Animation;
+package com.scope.animation;
 
 import java.awt.image.BufferedImage;
 
