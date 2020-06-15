@@ -1,11 +1,9 @@
 package com.scope.gameState;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-
 import com.scope.game.GamePanel;
 import com.scope.inputHandler.InputHandler;
+
+import java.awt.*;
 
 public class GameOver extends GameStateImpl {
 
@@ -38,7 +36,6 @@ public class GameOver extends GameStateImpl {
     }
 
     public void draw(Graphics2D g) {
-
         g.setColor(bgColor);
         g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 
@@ -56,7 +53,7 @@ public class GameOver extends GameStateImpl {
 
     public void handleInput() {
         if (InputHandler.isPressed(InputHandler.ENTER)) {
-            gsm.setState(GameStateManager.MENUSTATE);
+            gsm.setState(GameStateManager.MENU_STATE);
         }
     }
 

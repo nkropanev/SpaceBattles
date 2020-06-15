@@ -1,10 +1,10 @@
 package com.scope.gameState;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public abstract class GameStateImpl implements GameState {
 
-    protected GameStateManager gsm;
+    protected final GameStateManager gsm;
 
     public GameStateImpl(GameStateManager gsm) {
         this.gsm = gsm;

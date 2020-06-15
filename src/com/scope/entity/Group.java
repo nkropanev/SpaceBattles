@@ -1,14 +1,14 @@
 package com.scope.entity;
 
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-
 import com.scope.entity.enemies.Bg1;
 import com.scope.entity.enemies.Bg2;
 import com.scope.entity.enemies.Bg3;
 import com.scope.entity.enemies.Bg4;
 import com.scope.game.GamePanel;
 import com.scope.gameState.LevelState;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public class Group {
 
@@ -28,16 +28,14 @@ public class Group {
     private ArrayList<Bg3> bg3Arr;
     private ArrayList<Bg4> bg4Arr;
 
+    private final ArrayList<Enemy>[] group = new ArrayList[]{bg4Arr, bg3Arr, bg2Arr, bg1Arr, bg11Arr};
+
     public Group(double ms) {
-
         groupMS = ms;
-
         initNewGroup();
-
     }
 
     private void moveBack() {
-
         for (int i = 0; i < bg4Num; i++) {
             bg4Arr.get(i).setPosition(GamePanel.WIDTH / 2 - 27 + GamePanel.WIDTH / 11 * i, 40);
         }
@@ -55,7 +53,6 @@ public class Group {
 
             bg11Arr.get(i).setPosition(GamePanel.WIDTH / 8 + GamePanel.WIDTH / 11 * i, 100);
         }
-
     }
 
     public boolean checkExplBgAll(Enemy en, PMissile pm) {
@@ -72,7 +69,6 @@ public class Group {
     }
 
     public boolean checkIntersectsAll(Enemy en, Player p) {
-
         if (en.intersects(p) && !p.isFlinch()) {
             en.setAlive(false);
             p.setHealth(p.getHealth() - 1);
@@ -84,7 +80,6 @@ public class Group {
             return true;
         }
         return false;
-
     }
 
     public void initNewGroup() {
@@ -96,12 +91,10 @@ public class Group {
         bg11Arr = new ArrayList<>();
 
         for (int i = 0; i < bg4Num; i++) {
-
             Bg4 bg4 = new Bg4(13 * GamePanel.SCALE, 14);
             bg4.setPosition(GamePanel.WIDTH / 2 - 27 + GamePanel.WIDTH / 11 * i, 40);
             bg4.setMS(groupMS);
             bg4Arr.add(bg4);
-
         }
 
         for (int i = 0; i < bg3Num; i++) {
@@ -122,7 +115,6 @@ public class Group {
         }
 
         for (int i = 0; i < bg1Num; i++) {
-
             Bg1 bg1 = new Bg1(13 * GamePanel.SCALE, 14);
             bg1.setPosition(GamePanel.WIDTH / 8 + GamePanel.WIDTH / 11 * i, 85);
             bg1.setMS(groupMS);
@@ -143,124 +135,47 @@ public class Group {
     }
 
     private void recount() {
-
         count = 0;
-        for (int i = 0; i < bg4Arr.size(); i++) {
-            if (bg4Arr.get(i).isAlive())
-                count++;
+        for (ArrayList<Enemy> enemies : getGroup()) {
+            for (Enemy enemy : enemies) {
+                if (enemy.isAlive()) {
+                    count++;
+                }
+            }
         }
-
-        for (int i = 0; i < bg3Arr.size(); i++) {
-            if (bg3Arr.get(i).isAlive())
-                count++;
-        }
-
-        for (int i = 0; i < bg2Arr.size(); i++) {
-            if (bg2Arr.get(i).isAlive())
-                count++;
-        }
-
-        for (int i = 0; i < bg1Arr.size(); i++) {
-            if (bg1Arr.get(i).isAlive())
-                count++;
-        }
-
-        for (int i = 0; i < bg11Arr.size(); i++) {
-            if (bg11Arr.get(i).isAlive())
-                count++;
-        }
-
     }
 
     private void newY() {
-
-        for (int i = 0; i < bg4Arr.size(); i++) {
-            bg4Arr.get(i).sety(bg4Arr.get(i).gety() + 10);
+        for (ArrayList<Enemy> enemies : getGroup()) {
+            for (Enemy enemy : enemies) {
+                enemy.sety(enemy.gety() + 10);
+            }
         }
-
-        for (int i = 0; i < bg3Arr.size(); i++) {
-            bg3Arr.get(i).sety(bg3Arr.get(i).gety() + 10);
-        }
-
-        for (int i = 0; i < bg2Arr.size(); i++) {
-            bg2Arr.get(i).sety(bg2Arr.get(i).gety() + 10);
-        }
-
-        for (int i = 0; i < bg1Arr.size(); i++) {
-            bg1Arr.get(i).sety(bg1Arr.get(i).gety() + 10);
-        }
-
-        for (int i = 0; i < bg11Arr.size(); i++) {
-            bg11Arr.get(i).sety(bg11Arr.get(i).gety() + 10);
-        }
-
     }
 
     private void checkDirection() {
-
-        for (int i = 0; i < bg4Arr.size(); i++) {
-            if (bg4Arr.get(i).getx() >= GamePanel.WIDTH - 13) {
-                direction = 1;
-                newY();
-                return;
-            } else if (bg4Arr.get(i).getx() <= 0) {
-                direction = 2;
-                return;
+        for (ArrayList<Enemy> enemies : getGroup()) {
+            for (Enemy enemy : enemies) {
+                checkDirectionForBg(enemy.getx());
             }
         }
-
-        for (int i = 0; i < bg3Arr.size(); i++) {
-            if (bg3Arr.get(i).getx() >= GamePanel.WIDTH - 13) {
-                direction = 1;
-                newY();
-                return;
-            } else if (bg3Arr.get(i).getx() <= 0) {
-                direction = 2;
-                return;
-            }
-        }
-
-        for (int i = 0; i < bg2Arr.size(); i++) {
-            if (bg2Arr.get(i).getx() >= GamePanel.WIDTH - 13) {
-                direction = 1;
-                newY();
-                return;
-            } else if (bg2Arr.get(i).getx() <= 0) {
-                direction = 2;
-                return;
-            }
-        }
-
-        for (int i = 0; i < bg1Arr.size(); i++) {
-            if (bg1Arr.get(i).getx() >= GamePanel.WIDTH - 13) {
-                direction = 1;
-                newY();
-                return;
-            } else if (bg1Arr.get(i).getx() <= 0) {
-                direction = 2;
-                return;
-            }
-        }
-
-        for (int i = 0; i < bg11Arr.size(); i++) {
-            if (bg11Arr.get(i).getx() >= GamePanel.WIDTH - 13) {
-                direction = 1;
-                newY();
-                return;
-            } else if (bg11Arr.get(i).getx() <= 0) {
-                direction = 2;
-                return;
-            }
-        }
-
     }
 
-    public void setGroupMS(double ms) {
-        groupMS = ms;
+    private void checkDirectionForBg(int getx) {
+        if (getx >= GamePanel.WIDTH - 13) {
+            direction = 1;
+            newY();
+        } else if (getx <= 0) {
+            direction = 2;
+        }
     }
 
     public double getGroupMS() {
         return groupMS;
+    }
+
+    public void setGroupMS(double ms) {
+        groupMS = ms;
     }
 
     public boolean isEmpty() {
@@ -268,13 +183,12 @@ public class Group {
     }
 
     public void update() {
-
         //upd bg4Arr
-        for (int i = 0; i < bg4Arr.size(); i++) {
-            bg4Arr.get(i).direction = direction;
-            if (bg4Arr.get(i).isAlive()) {
-                bg4Arr.get(i).update();
-                if (bg4Arr.get(i).gety() >= GamePanel.HEIGHT) {
+        for (Bg4 bg4 : bg4Arr) {
+            bg4.direction = direction;
+            if (bg4.isAlive()) {
+                bg4.update();
+                if (bg4.gety() >= GamePanel.HEIGHT) {
                     moveBack();
                     LevelState.killPlayer();
                 }
@@ -282,7 +196,6 @@ public class Group {
         }
 
         for (int i = 0; i < bg1Arr.size(); i++) {
-
             //upd bg1Arr
             bg1Arr.get(i).direction = direction;
             if (bg1Arr.get(i).isAlive()) {
@@ -338,71 +251,19 @@ public class Group {
         }
 
         checkDirection();
-
     }
 
     public void draw(Graphics2D g) {
-
-        for (int i = 0; i < bg4Arr.size(); i++) {
-            bg4Arr.get(i).draw(g);
-        }
-
-        for (int i = 0; i < bg3Arr.size(); i++) {
-            bg3Arr.get(i).draw(g);
-        }
-
-        for (int i = 0; i < bg2Arr.size(); i++) {
-            bg2Arr.get(i).draw(g);
-        }
-
-        for (int i = 0; i < bg1Arr.size(); i++) {
-            bg1Arr.get(i).draw(g);
-        }
-
-        for (int i = 0; i < bg1Arr.size(); i++) {
-            bg11Arr.get(i).draw(g);
+        for (ArrayList<Enemy> enemies : getGroup()) {
+            for (Enemy enemy : enemies) {
+                enemy.draw(g);
+            }
         }
 
     }
 
-    public ArrayList<Bg1> getBg1Arr() {
-        return bg1Arr;
-    }
-
-    public void setBg1Arr(ArrayList<Bg1> bg1Arr) {
-        this.bg1Arr = bg1Arr;
-    }
-
-    public ArrayList<Bg1> getBg11Arr() {
-        return bg11Arr;
-    }
-
-    public void setBg11Arr(ArrayList<Bg1> bg11Arr) {
-        this.bg11Arr = bg11Arr;
-    }
-
-    public ArrayList<Bg2> getBg2Arr() {
-        return bg2Arr;
-    }
-
-    public void setBg2Arr(ArrayList<Bg2> bg2Arr) {
-        this.bg2Arr = bg2Arr;
-    }
-
-    public ArrayList<Bg3> getBg3Arr() {
-        return bg3Arr;
-    }
-
-    public void setBg3Arr(ArrayList<Bg3> bg3Arr) {
-        this.bg3Arr = bg3Arr;
-    }
-
-    public ArrayList<Bg4> getBg4Arr() {
-        return bg4Arr;
-    }
-
-    public void setBg4Arr(ArrayList<Bg4> bg4Arr) {
-        this.bg4Arr = bg4Arr;
+    public ArrayList<Enemy>[] getGroup() {
+        return group;
     }
 
 }

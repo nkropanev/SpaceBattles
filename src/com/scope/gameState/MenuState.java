@@ -1,23 +1,19 @@
 package com.scope.gameState;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-
 import com.scope.game.Game;
 import com.scope.game.GamePanel;
 import com.scope.inputHandler.InputHandler;
 
+import java.awt.*;
+
 public class MenuState extends GameStateImpl {
 
-    private Color bgColor;
-
-    private int currentChoice = 0;
-    private String[] options = {
+    private final String[] options = {
             "Start",
             "Quit"
     };
-
+    private Color bgColor;
+    private int currentChoice = 0;
     private Color titleColor;
     private Color color;
     private Color color1;
@@ -27,6 +23,12 @@ public class MenuState extends GameStateImpl {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
+
+        init();
+    }
+
+    public void init() {
+        InputHandler.setFalse();
 
         try {
             // set background
@@ -41,12 +43,6 @@ public class MenuState extends GameStateImpl {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        init();
-    }
-
-    public void init() {
-        InputHandler.setFalse();
     }
 
     public void update() {
@@ -77,7 +73,7 @@ public class MenuState extends GameStateImpl {
 
     public void select() {
         if (currentChoice == 0) {
-            gsm.setState(GameStateManager.LEVELSTATE);
+            gsm.setState(GameStateManager.LEVEL_STATE);
         }
         if (currentChoice == 1) {
             System.exit(0);

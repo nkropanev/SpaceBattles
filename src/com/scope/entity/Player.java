@@ -1,26 +1,21 @@
 package com.scope.entity;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import com.scope.game.GamePanel;
 
 import javax.imageio.ImageIO;
-
-import com.scope.game.GamePanel;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player extends MapObject {
 
     private int health;
-    private int maxHealth;
-    private int moveSpeed = (int) (3);
     private BufferedImage sprite;
     private boolean flinching;
     private long flinchTimer;
 
     public Player(int width, int height) {
-
         super(0, 0, width, height);
 
-        health = maxHealth = 3;
         direction = 0;
 
         try {
@@ -28,20 +23,35 @@ public class Player extends MapObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    public void checkAttack(Enemy e) {
-
-        if (intersects(e) && !flinching) {
-            e.alive = false;
-            health--;
-            if (health < 0) health = 0;
-            if (health == 0) alive = false;
-            flinching = true;
-            flinchTimer = System.nanoTime();
+    public void update() {
+        if (flinching) {
+            long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
+            if (elapsed > 1000) {
+                flinching = false;
+                x = (GamePanel.WIDTH - width / 2) / 2;
+            }
         }
 
+        int moveSpeed = 3;
+        if (direction == MOVE_LEFT) {
+            x -= moveSpeed;
+            if (x < 0) {
+                x = 0;
+            }
+        } else if (direction == MOVE_RIGHT) {
+            x += moveSpeed;
+            if (x > (GamePanel.WIDTH - width / GamePanel.SCALE)) {
+                x = GamePanel.WIDTH - width / GamePanel.SCALE;
+            }
+        }
+    }
+
+    public void draw(Graphics2D g) {
+        if (!flinching) {
+            g.drawImage(sprite, (int) x, (int) y, null);
+        }
     }
 
     public boolean isFlinch() {
@@ -64,45 +74,9 @@ public class Player extends MapObject {
         health = h;
     }
 
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public void update() {
-
-        if (flinching) {
-            long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
-            if (elapsed > 1000) {
-                flinching = false;
-                x = (GamePanel.WIDTH - width / 2) / 2;
-            }
-        }
-
-        if (direction == MOVE_LEFT) {
-            x -= moveSpeed;
-            if (x < 0) {
-                x = 0;
-            }
-        } else if (direction == MOVE_RIGHT) {
-            x += moveSpeed;
-            if (x > (GamePanel.WIDTH - width / GamePanel.SCALE)) {
-                x = GamePanel.WIDTH - width / GamePanel.SCALE;
-            }
-        }
-
-    }
-
-    public void draw(Graphics2D g) {
-
-        if (!flinching) {
-            g.drawImage(sprite, (int) x, (int) y, null);
-        }
-
     }
 
 }

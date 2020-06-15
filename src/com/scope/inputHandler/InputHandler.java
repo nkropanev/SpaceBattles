@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 
 public class InputHandler {
 
-    private static final int NUMKEYS = 7;
     public static final int UP = 0;
     public static final int LEFT = 1;
     public static final int DOWN = 2;
@@ -12,11 +11,10 @@ public class InputHandler {
     public static final int ENTER = 4;
     public static final int ESCAPE = 5;
     public static final int SPACE = 6;
-
-    public static boolean keyState[] = new boolean[NUMKEYS];
+    private static final int NUM_KEYS = 7;
+    public static final boolean[] keyState = new boolean[NUM_KEYS];
 
     public static void setKey(int i, boolean b) {
-
         if (i == KeyEvent.VK_UP) keyState[UP] = b;
         else if (i == KeyEvent.VK_LEFT) keyState[LEFT] = b;
         else if (i == KeyEvent.VK_DOWN) keyState[DOWN] = b;
@@ -31,7 +29,7 @@ public class InputHandler {
     }
 
     public static void setFalse() {
-        for (int i = 0; i < NUMKEYS; i++) {
+        for (int i = 0; i < NUM_KEYS; i++) {
             keyState[i] = false;
         }
     }

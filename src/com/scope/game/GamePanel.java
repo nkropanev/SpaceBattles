@@ -1,16 +1,13 @@
 package com.scope.game;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import com.scope.gameState.GameStateManager;
+import com.scope.inputHandler.InputHandler;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-
-import javax.swing.JPanel;
-
-import com.scope.gameState.GameStateManager;
-import com.scope.inputHandler.InputHandler;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {
@@ -23,8 +20,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     // game thread
     private Thread thread;
     private boolean running;
-    private int FPS = 60;
-    private long targetTime = 1000 / FPS;
 
     // image
     private BufferedImage image;
@@ -50,18 +45,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     }
 
     private void init() {
-
         image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         g = (Graphics2D) image.getGraphics();
-
         running = true;
-
         gsm = new GameStateManager();
-
     }
 
     public void run() {
-
         init();
 
         long start;
@@ -70,7 +60,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
         // game loop
         while (running) {
-
             start = System.nanoTime();
 
             update();
@@ -79,6 +68,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
             elapsed = System.nanoTime() - start;
 
+            final int FPS = 60;
+            final long targetTime = 1000 / FPS;
             wait = targetTime - elapsed / 1000000;
             if (wait < 0) wait = 5;
 
@@ -87,9 +78,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 
     private void update() {

@@ -1,31 +1,30 @@
 package com.scope.gameState;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public class GameStateManager {
 
-    private GameState[] gameStates;
+    public static final int NUM_GAME_STATES = 3;
+    public static final int MENU_STATE = 0;
+    public static final int LEVEL_STATE = 1;
+    public static final int GAME_OVER = 2;
+    private final GameState[] gameStates;
     private int currentState;
     private int score;
 
-    public static final int NUMGAMESTATES = 3;
-    public static final int MENUSTATE = 0;
-    public static final int LEVELSTATE = 1;
-    public static final int GAMEOVER = 2;
-
     public GameStateManager() {
-        gameStates = new GameState[NUMGAMESTATES];
+        gameStates = new GameState[NUM_GAME_STATES];
 
-        currentState = MENUSTATE;
+        currentState = MENU_STATE;
         loadState(currentState);
     }
 
     private void loadState(int state) {
-        if (state == MENUSTATE)
+        if (state == MENU_STATE)
             gameStates[state] = new MenuState(this);
-        else if (state == LEVELSTATE)
+        else if (state == LEVEL_STATE)
             gameStates[state] = new LevelState(this);
-        else if (state == GAMEOVER)
+        else if (state == GAME_OVER)
             gameStates[state] = new GameOver(this);
     }
 

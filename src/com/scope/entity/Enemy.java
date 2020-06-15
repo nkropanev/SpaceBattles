@@ -1,15 +1,15 @@
 package com.scope.entity;
 
+import java.awt.*;
+
 public abstract class Enemy extends MapObject {
 
     protected int cost;
     protected double moveSpeed;
 
     public Enemy(int width, int height) {
-
         super(0, 0, width, height);
         direction = 0;
-
     }
 
     public void setPosition(int x, int y) {
@@ -30,17 +30,17 @@ public abstract class Enemy extends MapObject {
     }
 
     private void getNextPosition() {
-
         if (direction == MOVE_LEFT) {
             x -= moveSpeed;
         } else if (direction == MOVE_RIGHT) {
             x += moveSpeed;
         }
-
     }
 
     public void update() {
         getNextPosition();
     }
 
+    public void draw(Graphics2D g) {
+    }
 }
