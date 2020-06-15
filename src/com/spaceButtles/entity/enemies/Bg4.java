@@ -1,7 +1,7 @@
-package com.scope.entity.enemies;
+package com.spaceButtles.entity.enemies;
 
-import com.scope.animation.Animation;
-import com.scope.entity.Enemy;
+import com.spaceButtles.animation.Animation;
+import com.spaceButtles.entity.Enemy;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

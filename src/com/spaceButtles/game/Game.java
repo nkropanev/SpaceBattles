@@ -1,4 +1,4 @@
-package com.scope.game;
+package com.spaceButtles.game;
 
 import javax.swing.*;
 

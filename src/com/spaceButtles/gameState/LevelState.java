@@ -1,8 +1,8 @@
-package com.scope.gameState;
+package com.spaceButtles.gameState;
 
-import com.scope.entity.*;
-import com.scope.game.GamePanel;
-import com.scope.inputHandler.InputHandler;
+import com.spaceButtles.entity.*;
+import com.spaceButtles.game.GamePanel;
+import com.spaceButtles.inputHandler.InputHandler;
 
 import java.awt.*;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.scope.entity.MapObject.*;
+import static com.spaceButtles.entity.MapObject.*;
 
 public class LevelState extends GameStateImpl {
 

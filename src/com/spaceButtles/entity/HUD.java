@@ -1,6 +1,6 @@
-package com.scope.entity;
+package com.spaceButtles.entity;
 
-import com.scope.gameState.LevelState;
+import com.spaceButtles.gameState.LevelState;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

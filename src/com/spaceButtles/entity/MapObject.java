@@ -1,7 +1,7 @@
-package com.scope.entity;
+package com.spaceButtles.entity;
 
-import com.scope.animation.Animation;
-import com.scope.game.GamePanel;
+import com.spaceButtles.animation.Animation;
+import com.spaceButtles.game.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

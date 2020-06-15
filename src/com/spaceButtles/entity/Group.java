@@ -1,11 +1,11 @@
-package com.scope.entity;
+package com.spaceButtles.entity;
 
-import com.scope.entity.enemies.Bg1;
-import com.scope.entity.enemies.Bg2;
-import com.scope.entity.enemies.Bg3;
-import com.scope.entity.enemies.Bg4;
-import com.scope.game.GamePanel;
-import com.scope.gameState.LevelState;
+import com.spaceButtles.entity.enemies.Bg1;
+import com.spaceButtles.entity.enemies.Bg2;
+import com.spaceButtles.entity.enemies.Bg3;
+import com.spaceButtles.entity.enemies.Bg4;
+import com.spaceButtles.game.GamePanel;
+import com.spaceButtles.gameState.LevelState;
 
 import java.awt.*;
 import java.util.ArrayList;

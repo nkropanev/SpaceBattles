@@ -1,7 +1,7 @@
-package com.scope.game;
+package com.spaceButtles.game;
 
-import com.scope.gameState.GameStateManager;
-import com.scope.inputHandler.InputHandler;
+import com.spaceButtles.gameState.GameStateManager;
+import com.spaceButtles.inputHandler.InputHandler;
 
 import javax.swing.*;
 import java.awt.*;

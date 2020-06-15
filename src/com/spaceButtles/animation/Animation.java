@@ -1,4 +1,4 @@
-package com.scope.animation;
+package com.spaceButtles.animation;
 
 import java.awt.image.BufferedImage;
 

@@ -1,4 +1,4 @@
-package com.scope.entity;
+package com.spaceButtles.entity;
 
 import java.awt.*;
 

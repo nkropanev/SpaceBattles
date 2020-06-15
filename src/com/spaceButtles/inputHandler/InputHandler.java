@@ -1,4 +1,4 @@
-package com.scope.inputHandler;
+package com.spaceButtles.inputHandler;
 
 import java.awt.event.KeyEvent;
 

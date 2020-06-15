@@ -1,4 +1,4 @@
-package com.scope.gameState;
+package com.spaceButtles.gameState;
 
 
 import java.awt.*;

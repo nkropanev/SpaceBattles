@@ -1,6 +1,6 @@
-package com.scope.entity;
+package com.spaceButtles.entity;
 
-import com.scope.game.GamePanel;
+import com.spaceButtles.game.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
