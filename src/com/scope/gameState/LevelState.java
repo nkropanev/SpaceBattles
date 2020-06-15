@@ -59,7 +59,7 @@ public class LevelState extends GameStateImpl {
             }
 
             // init bg
-            bg = new Background("/Sprites/Background/background.png", 1);
+            bg = new Background("/Sprites/Background/background.png");
             bg.setVector(0, 0.5);
 
             // init player

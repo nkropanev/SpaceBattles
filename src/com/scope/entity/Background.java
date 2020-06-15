@@ -16,7 +16,7 @@ public class Background {
     private double dy;
     private BufferedImage[] frames;
 
-    public Background(String s, double ms) {
+    public Background(String s) {
         try {
             BufferedImage image = ImageIO.read(getClass().getResourceAsStream(s));
             frames = new BufferedImage[numFrames];

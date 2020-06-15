@@ -9,21 +9,20 @@ import java.awt.image.BufferedImage;
 
 public abstract class MapObject {
 
-    //moving
+    // moving
     public static final int NO_MOVE = 0;
     public static final int MOVE_LEFT = 1;
     public static final int MOVE_RIGHT = 2;
     protected final int width;
     protected final int height;
     protected int direction;
-    //dimensions
+    // dimensions
     protected double x;
     protected double y;
     protected boolean alive;
 
-    //animation
+    // animation
     protected Animation animation;
-
 
     public MapObject(int x, int y, int w, int h) {
         this.x = x;
@@ -55,10 +54,6 @@ public abstract class MapObject {
 
     public void setAlive(boolean a) {
         alive = a;
-    }
-
-    public int getDirection() {
-        return direction;
     }
 
     public void setDirection(int direction) {

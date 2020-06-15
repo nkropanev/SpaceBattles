@@ -16,6 +16,7 @@ public class Player extends MapObject {
     public Player(int width, int height) {
         super(0, 0, width, height);
 
+        health = 3;
         direction = 0;
 
         try {

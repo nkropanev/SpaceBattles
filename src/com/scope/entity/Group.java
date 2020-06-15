@@ -28,7 +28,7 @@ public class Group {
     private ArrayList<Bg3> bg3Arr;
     private ArrayList<Bg4> bg4Arr;
 
-    private final ArrayList<Enemy>[] group = new ArrayList[]{bg4Arr, bg3Arr, bg2Arr, bg1Arr, bg11Arr};
+    private ArrayList<Enemy>[] group;
 
     public Group(double ms) {
         groupMS = ms;
@@ -83,12 +83,12 @@ public class Group {
     }
 
     public void initNewGroup() {
-
         bg4Arr = new ArrayList<>();
         bg3Arr = new ArrayList<>();
         bg2Arr = new ArrayList<>();
         bg1Arr = new ArrayList<>();
         bg11Arr = new ArrayList<>();
+        group = new ArrayList[]{bg4Arr, bg3Arr, bg2Arr, bg1Arr, bg11Arr};
 
         for (int i = 0; i < bg4Num; i++) {
             Bg4 bg4 = new Bg4(13 * GamePanel.SCALE, 14);
